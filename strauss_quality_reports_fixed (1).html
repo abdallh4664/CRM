@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>דוחות שירות איכותיים - שטראוס</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7f9;
+      color: #333;
+      direction: rtl;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      padding: 20px;
+      border-bottom: 2px solid #ddd;
+    }
+    header img {
+      height: 60px;
+      margin-left: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #2c3e50;
+    }
+    main {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #2c3e50;
+      margin-top: 40px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .chart-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://th.bing.com/th/id/OIP.U24NsZ21nVshUw0TT84D2wHaFj?r=0&rs=1&pid=ImgDetMain" alt="Strauss Logo">
+    <h1>דוחות השירות - חברת שטראוס</h1>
+  </header>
+  <main>
+    <h2>1. סקר שביעות רצון לקוחות (CSAT)</h2>
+    <table>
+      <tr>
+        <th>חודש</th><th>אזור</th><th>משתתפים</th><th>ציון CSAT (1-5)</th><th>שיעור שביעות רצון</th>
+      </tr>
+      <tr>
+        <td>יוני 2025</td><td>צפון</td><td>1250</td><td>4.3</td><td>86%</td>
+      </tr>
+      <tr>
+        <td>יוני 2025</td><td>דרום</td><td>1250</td><td>4.1</td><td>82%</td>
+      </tr>
+      <tr>
+        <td>יוני 2025</td><td>מרכז</td><td>2500</td><td>4.6</td><td>92%</td>
+      </tr>
+    </table>
+    <div class="chart-container">
+      <canvas id="csatChart"></canvas>
+    </div>
+
+    <h2>2. דוח נטישת לקוחות</h2>
+    <table>
+      <tr>
+        <th>תקופה</th><th>צפון</th><th>דרום</th><th>מרכז</th><th>סה"כ</th>
+      </tr>
+      <tr>
+        <td>יוני 2025</td><td>9</td><td>11</td><td>28</td><td>48</td>
+      </tr>
+    </table>
+    <div class="chart-container">
+      <canvas id="churnChart"></canvas>
+    </div>
+
+    <h2>3. גיוסי לקוחות חדשים</h2>
+    <table>
+      <tr>
+        <th>שבוע</th><th>צפון</th><th>דרום</th><th>מרכז</th><th>סה"כ</th>
+      </tr>
+      <tr>
+        <td>1-7 ביוני</td><td>6</td><td>7</td><td>16</td><td>29</td>
+      </tr>
+      <tr>
+        <td>8-14 ביוני</td><td>5</td><td>4</td><td>14</td><td>23</td>
+      </tr>
+      <tr>
+        <td>15-21 ביוני</td><td>7</td><td>5</td><td>18</td><td>30</td>
+      </tr>
+    </table>
+    <div class="chart-container">
+      <canvas id="acquisitionChart"></canvas>
+    </div>
+
+    <h2>4. שיחות שננטשו בשל זמן המתנה - לפי אזור</h2>
+    <table>
+      <tr>
+        <th>אזור</th><th>סה"כ שיחות</th><th>שיחות ננטשו</th><th>שיעור נטישה</th>
+      </tr>
+      <tr>
+        <td>צפון</td><td>1000</td><td>120</td><td>12%</td>
+      </tr>
+      <tr>
+        <td>דרום</td><td>800</td><td>110</td><td>13.75%</td>
+      </tr>
+      <tr>
+        <td>מרכז</td><td>1700</td><td>180</td><td>10.6%</td>
+      </tr>
+    </table>
+    <div class="chart-container">
+      <canvas id="callsChart"></canvas>
+    </div>
+
+    <h2>5. דוחות איכות אספקה / תקלות</h2>
+    <p>
+      מה נמדד:
+      <ul>
+        <li>תקלות חוזרות באספקה</li>
+        <li>איחורים בהגעה</li>
+        <li>חוסרים במשלוחים</li>
+        <li>תלונות על שליחים</li>
+      </ul>
+      הלקוחות ממלאים "טופס איכות" דרך האפליקציה או דרך הסוכן בשטח.
+    </p>
+    <table>
+      <tr>
+        <th>אזור</th><th>סה"כ משלוחים</th><th>איחורים</th><th>חוסרים</th><th>תלונות על שליחים</th><th>אחוז תקינות</th>
+      </tr>
+      <tr>
+        <td>צפון</td><td>620</td><td>14</td><td>9</td><td>4</td><td>96.1%</td>
+      </tr>
+      <tr>
+        <td>דרום</td><td>510</td><td>20</td><td>13</td><td>6</td><td>94.3%</td>
+      </tr>
+      <tr>
+        <td>מרכז</td><td>950</td><td>22</td><td>17</td><td>8</td><td>95.0%</td>
+      </tr>
+    </table>
+    <div class="chart-container">
+      <canvas id="deliveryChart"></canvas>
+    </div>
+
+    <p style="text-align:center; margin-top: 40px;">הדוחות מופקים ממערכת Salesforce ומוצגים באמצעות Power BI ו-Excel.</p>
+  </main>
+  <footer>
+    &copy; 2025 שטראוס בע"מ - כל הזכויות שמורות.
+  </footer>
+
+  <script>
+    new Chart(document.getElementById('csatChart'), {
+      type: 'bar',
+      data: {
+        labels: ['צפון', 'דרום', 'מרכז'],
+        datasets: [{
+          label: '% שביעות רצון',
+          data: [86, 82, 92],
+          backgroundColor: ['#3498db', '#2ecc71', '#e67e22']
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+
+    new Chart(document.getElementById('churnChart'), {
+      type: 'pie',
+      data: {
+        labels: ['צפון', 'דרום', 'מרכז'],
+        datasets: [{
+          data: [9, 11, 28],
+          backgroundColor: ['#e74c3c', '#f1c40f', '#8e44ad']
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    new Chart(document.getElementById('acquisitionChart'), {
+      type: 'line',
+      data: {
+        labels: ['1-7 ביוני', '8-14 ביוני', '15-21 ביוני'],
+        datasets: [
+          { label: 'צפון', data: [6, 5, 7], borderColor: '#2980b9', fill: false },
+          { label: 'דרום', data: [7, 4, 5], borderColor: '#27ae60', fill: false },
+          { label: 'מרכז', data: [16, 14, 18], borderColor: '#c0392b', fill: false }
+        ]
+      },
+      options: { responsive: true }
+    });
+
+    new Chart(document.getElementById('callsChart'), {
+      type: 'bar',
+      data: {
+        labels: ['צפון', 'דרום', 'מרכז'],
+        datasets: [
+          { label: 'סה"כ שיחות', data: [1000, 800, 1700], backgroundColor: '#7f8c8d' },
+          { label: 'שיחות ננטשו', data: [120, 110, 180], backgroundColor: '#c0392b' }
+        ]
+      },
+      options: { responsive: true }
+    });
+
+    new Chart(document.getElementById('deliveryChart'), {
+      type: 'bar',
+      data: {
+        labels: ['צפון', 'דרום', 'מרכז'],
+        datasets: [
+          { label: 'איחורים', data: [14, 20, 22], backgroundColor: '#f1c40f' },
+          { label: 'חוסרים', data: [9, 13, 17], backgroundColor: '#e67e22' },
+          { label: 'תלונות על שליחים', data: [4, 6, 8], backgroundColor: '#c0392b' }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'תקלות באיכות אספקה לפי אזור'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
